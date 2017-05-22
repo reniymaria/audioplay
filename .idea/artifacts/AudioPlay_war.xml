@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="AudioPlay:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="AudioPlay.war">
+      <element id="artifact" artifact-name="AudioPlay:war exploded" />
+    </root>
+  </artifact>
+</component>
