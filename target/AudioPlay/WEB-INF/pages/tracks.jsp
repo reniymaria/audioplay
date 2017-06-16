@@ -41,7 +41,7 @@
             background-color: #f0f0f0;
         }
 
-        .tg .tg-4eph {
+        .tg  {
             background-color: #f9f9f9
         }
     </style>
@@ -59,16 +59,17 @@
             <th width="80">ID</th>
             <th width="120">Title</th>
             <th width="120">Author</th>
-            <th width="120">Play</th>
+            <th width="180">Play</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listTracks}" var="track">
             <tr>
                 <td>${track.id}</td>
-                <td><a href="/trackdata/${track.id}" target="_blank">${track.trackTitle}</a></td>
+                <td>${track.trackTitle}</td>
                 <td>${track.trackAuthor}</td>
-                <td>${track.play}</td>
+                <td> <audio src="/music/${track.play}" controls></audio>
+                </td>
                 <td><a href="<c:url value='/edit/${track.id}'/>">Edit</a></td>
                 <td><a href="<c:url value='/remove/${track.id}'/>">Delete</a></td>
             </tr>
@@ -76,12 +77,11 @@
     </table>
 </c:if>
 
+<h1>Edit track</h1>
 
-<h1>Add a Track</h1>
+<c:url var="editAction" value="/tracks/edit"/>
 
-<c:url var="addAction" value="/tracks/add"/>
-
-<form:form action="${addAction}" commandName="track">
+<form:form action="${editAction}" commandName="track">
     <table>
         <c:if test="${!empty track.trackTitle}">
             <tr>
@@ -117,28 +117,15 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <form:label path="play">
-                    <spring:message text="Play"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="play"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
+            <td colspan="1">
                 <c:if test="${!empty track.trackTitle}">
                     <input type="submit"
                            value="<spring:message text="Edit Track"/>"/>
-                </c:if>
-                <c:if test="${empty track.trackTitle}">
-                    <input type="submit"
-                           value="<spring:message text="Add Track"/>"/>
                 </c:if>
             </td>
         </tr>
     </table>
 </form:form>
+
 </body>
 </html>

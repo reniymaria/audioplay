@@ -4,11 +4,15 @@ package com.yellocode.audioplay.dao;
 import com.yellocode.audioplay.model.Track;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class TrackDaoImpl implements TrackDao {
 
+    @Autowired
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {

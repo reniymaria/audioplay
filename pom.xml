@@ -89,19 +89,20 @@
         </dependency>
     </dependencies>
 
+
     <build>
-        <finalName>AudioPlay</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <finalName>AudioPlay</finalName>
+    <plugins>
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>${java-version}</source>
+                <target>${java-version}</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 </project>

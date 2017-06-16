@@ -24,7 +24,7 @@
     </bean>
 
     <!-- Hibernate 4 SessionFactory Bean definition -->
-    <bean id="hibernate4AnnotatedSessionFactory"
+    <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
@@ -41,21 +41,12 @@
         </property>
     </bean>
 
-    <!--BookDao and BookService beans-->
-    <bean id="bookDao" class="com.yellocode.audioplay.dao.TrackDaoImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-
-    <bean id="trackService" class="com.yellocode.audioplay.service.TrackServiceImpl">
-        <property name="trackDao" ref="trackDao"/>
-    </bean>
-
     <context:component-scan base-package="com.yellocode.audioplay"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <mvc:default-servlet-handler/>
