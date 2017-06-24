@@ -6,13 +6,13 @@ import com.yellocode.audioplay.model.Track;
 import java.util.List;
 
 public interface TrackDao {
-    public void addTrack(Track track);
+    void addTrack(Track track);
 
-    public void updateTrack(Track track);
+    void updateTrack(Track track);
 
-    public void removeTrack(int id);
+    void removeTrack(int id);
 
-    public Track getTrackById(int id);
+    Track getTrackById(int id);
 
-    public List<Track> listTracks();
+    List<Track> listTracks();
 }

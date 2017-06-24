@@ -116,7 +116,19 @@
                 <form:input path="trackAuthor"/>
             </td>
         </tr>
-        <tr>
+        <c:if test="${!empty track.trackTitle}">
+            <tr>
+                <td>
+                    <form:label path="play">
+                        <spring:message text="Play Link"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="play" readonly="true" disabled="true"/>
+                    <form:hidden path="play"/>
+                </td>
+            </tr>
+        </c:if>
             <td colspan="1">
                 <c:if test="${!empty track.trackTitle}">
                     <input type="submit"

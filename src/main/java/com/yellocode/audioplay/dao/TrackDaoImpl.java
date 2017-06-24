@@ -47,7 +47,7 @@ public class TrackDaoImpl implements TrackDao {
     @Override
     public Track getTrackById(int id) {
         Session session =this.sessionFactory.getCurrentSession();
-        Track track = (Track) session.load(Track.class, new Integer(id));
+        Track track = (Track) session.get(Track.class, new Integer(id));
         return track;
     }
 

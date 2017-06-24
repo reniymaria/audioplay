@@ -24,36 +24,24 @@ public class AudioController {
         return "tracks";
     }
 
-    @RequestMapping(value = "/tracks/add", method = RequestMethod.POST)
-    public String addTrack(@ModelAttribute("track") Track track){
-        if(track.getId() == 0){
-            this.trackService.addTrack(track);
-        }else {
-            this.trackService.updateTrack(track);
-        }
-
+    @RequestMapping(value = "/tracks/edit", method = RequestMethod.POST)
+     public String addTrack(@ModelAttribute("track") Track track){
+        this.trackService.updateTrack(track);
         return "redirect:/tracks";
     }
 
     @RequestMapping("/remove/{id}")
     public String removeTrack(@PathVariable("id") int id){
         this.trackService.removeTrack(id);
-
         return "redirect:/tracks";
     }
 
     @RequestMapping("edit/{id}")
-    public String editBook(@PathVariable("id") int id, Model model){
+       public String editTrack(@PathVariable("id") int id, Model model){
         model.addAttribute("track", this.trackService.getTrackById(id));
         model.addAttribute("listTracks", this.trackService.listTracks());
         return "tracks";
     }
 
-    @RequestMapping("trackdata/{id}")
-    public String trackData(@PathVariable("id") int id, Model model){
-        model.addAttribute("track", this.trackService.getTrackById(id));
-
-        return "trackdata";
-    }
 
 }
